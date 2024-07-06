@@ -1,51 +1,28 @@
-// Import the React library
 import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Add these imports
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Navbar from './components/navbar';
+import Home from './components/Home'; // Add these imports
+import About from './components/About'; // Add these imports
+import Contact from './components/Contact'; // Add these imports
 
-// Define the App component
 function App() {
   return (
-    // The main container div for the App component
-    <div className="App">
-      {/* Header section of the App */}
-      <header className="App-header">
-        {/* Navbar component using Bootstrap classes */}
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-          {/* Brand name or logo */}
-          <a className="navbar-brand" href="#">Navbar</a>
-          {/* Button for toggling the navbar in mobile view */}
-          <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          {/* Collapsible part of the navbar */}
-          <div className="collapse navbar-collapse" id="navbarNav">
-            {/* Navbar items */}
-            <ul className="navbar-nav">
-              {/* Active navbar item */}
-              <li className="nav-item active">
-                <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
-              </li>
-              {/* Navbar item */}
-              <li className="nav-item">
-                <a className="nav-link" href="#">Features</a>
-              </li>
-              {/* Navbar item */}
-              <li className="nav-item">
-                <a className="nav-link" href="#">Pricing</a>
-              </li>
-            </ul>
+    <Router>
+      <div className="App">
+        <header className="App-header">
+          <Navbar />
+          <div className="container mt-5">
+            <Routes>
+              <Route path="/" element={<Home />} /> {/* Update the element prop */}
+              <Route path="/about" element={<About />} /> {/* Update the element prop */}
+              <Route path="/contact" element={<Contact />} /> {/* Update the element prop */}
+            </Routes>
           </div>
-        </nav>
-        {/* Main content container with some margin at the top */}
-        <div className="container mt-5">
-          {/* Heading */}
-          <h1>Hello, Bootstrap!</h1>
-          {/* Lead paragraph */}
-          <p className="lead">This is a simple example of using Bootstrap in a React project.</p>
-        </div>
-      </header>
-    </div>
+        </header>
+      </div>
+    </Router>
   );
 }
 
-// Export the App component as the default export
-export
+export default App;
